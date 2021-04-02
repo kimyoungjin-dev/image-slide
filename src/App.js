@@ -9,30 +9,36 @@ const Box = styled.div`
   height: 100vh;
   align-items: center;
   justify-content: center;
+  width: 100%;
 `;
 
 const Image = styled.img`
   width: 1000px;
   height: 600px;
+  border-radius: 10px;
 `;
 
 const LeftArrow = styled(FaArrowLeft)`
   position: absolute;
   width: 50px;
   height: 50px;
-  color: white;
+  color: black;
   border-radius: 50%;
   left: 32px;
+  cursor: pointer;
+  user-select: none;
 `;
 
 const RightArrow = styled(FaArrowRight)`
   position: absolute;
   width: 50px;
   height: 50px;
-  color: white;
+  color: black;
   border-radius: 50%;
   top: 50%;
   right: 32px;
+  cursor: pointer;
+  user-select: none;
 `;
 
 const App = () => {
@@ -54,10 +60,10 @@ const App = () => {
     <Box>
       <LeftArrow onClick={prevButton} />
       <RightArrow onClick={nextButton} />
-
-      {SliderData.map((v, i) => (
-        <Image src={v.image.default} />
-      ))}
+      {SliderData.map(
+        (slide, index) =>
+          current === index && <Image key={index} src={slide.image.default} />
+      )}
     </Box>
   );
 };
